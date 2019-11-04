@@ -1,0 +1,6 @@
+.idea
+.node-version
+node_modules
+dist/index.js.map
+dist/index.jsy
+dist/index.css

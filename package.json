@@ -1,0 +1,49 @@
+{
+  "name": "gfh_customiser_fast_track",
+  "version": "0.0.0",
+  "description": "Fast Track product customiser tool",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -cw",
+    "dev-mock": "rollup -cw --environment USE_MOCK_API"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+    "@babel/plugin-transform-async-to-generator": "^7.5.0",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.0.0",
+    "core-js": "3",
+    "cssnano": "^4.1.10",
+    "node-sass": "^4.12.0",
+    "regenerator-runtime": "^0.13.3",
+    "rollup": "^1.19.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.2",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^5.1.1"
+  },
+  "dependencies": {
+    "cloudinary": "^1.14.0",
+    "cloudinary-core": "^2.6.3",
+    "cloudinary-react": "^1.1.1",
+    "file-saver": "^2.0.2",
+    "gfh-js-utilities": "./src/lib/gfh-js-utilities/dist",
+    "gfh-react-components": "./src/lib/gfh-react-components/dist",
+    "installation-builder": "./src/lib/installation-builder/dist",
+    "jszip": "^3.2.2",
+    "materialize-css": "^1.0.0-rc.2",
+    "query-string": "^6.8.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
+  }
+}
