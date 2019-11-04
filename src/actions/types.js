@@ -1,0 +1,1 @@
+export const SET_VARIANT = 'set_variant';
