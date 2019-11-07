@@ -6,6 +6,14 @@ import { Installation } from 'installation-builder';
 
 class Visualiser extends Component {
 
+  constructor(props) {
+    super(props);
+
+    // Set flag to hide content with css while initial patterns are loaded.
+    // Unset after the first page load.
+    this.initialLoad = true;
+  }
+
   componentDidMount() {
     this.props.setVariant(this.props.globalId);
   }
@@ -57,21 +65,35 @@ class Visualiser extends Component {
   }
 
   render() {
+    let classes = [];
+
     // Return a loader if we're still waiting for the initial variant response from the API.
     if (!this.props.variant) {
       return <CircularPreloader />;
     }
 
+    if (this.initialLoad && !this.props.patternLoaded.loaded) {
+      // Add a class to hide the initial page load content with css while the initial
+      // pattern loads.
+      classes.push('initial-load');
+    }
+    else {
+      this.initialLoad = false;
+    }
+
     return (
       <div>
-        { this.renderDisplayArea() }
+        { this.initialLoad && <CircularPreloader />}
+        <div className={classes.join(" ")}>
+          { this.renderDisplayArea() }
+        </div>
       </div>
     );
   }
 }
 
-function mapStateToProps({ variant, alterableColours, patternUrl }) {
-  return { variant, alterableColours, patternUrl };
+function mapStateToProps({ variant, alterableColours, patternUrl, patternLoaded }) {
+  return { variant, alterableColours, patternUrl, patternLoaded };
 }
 
 export default connect(mapStateToProps, {
