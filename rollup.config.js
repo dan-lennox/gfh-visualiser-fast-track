@@ -62,7 +62,7 @@ export default (async () => {
             }
           ]
         ],
-        plugins: ['@babel/plugin-proposal-optional-chaining'],
+        plugins: ['@babel/plugin-proposal-optional-chaining', 'styled-jsx/babel'],
       }),
       globals(),
       // Minify for production builds.

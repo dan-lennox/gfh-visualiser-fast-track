@@ -1,0 +1,47 @@
+#display-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#display-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 0 3rem 0;
+
+  #primary-image-wrapper,
+  #layers-wrapper {
+    width: 50%;
+    box-sizing: border-box;
+  }
+  #primary-image-wrapper {
+    padding-right: 25px;
+    .installation {
+      float: right;
+    }
+  }
+
+  #layers-wrapper {
+    display: flex;
+    justify-content: left;
+    padding-left: 29px;
+  }
+
+  #layers-inner {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h3, p {
+      width: 300px;
+      text-align: center;
+      margin: 0 0 2rem 0;
+    }
+    h3 {
+      font-size: 2.2rem;
+    }
+  }
+}

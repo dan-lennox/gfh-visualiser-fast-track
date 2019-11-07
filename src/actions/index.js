@@ -41,10 +41,6 @@ export const getAlterableColours = ({ globalId, customColours, availableColours,
   // Connect to Cloudinary
   const cl = cloudinary.Cloudinary.new( { cloud_name: "gh"});
 
-  // Helper?
-  // Input globalId
-  // output
-
   let cloudinaryPublicId = `experiments/variants/${globalId}/cad/flat-web.gif`;
 
   // The raw method... let's load the image to canvas.
@@ -84,7 +80,6 @@ export const getAlterableColours = ({ globalId, customColours, availableColours,
           return found;
         }, 0);
 
-        console.log('valid', valid);
         // Only use the url param colours if all are valid.
         if (valid === alterableColours.length) {
           initialColours = [
@@ -100,8 +95,6 @@ export const getAlterableColours = ({ globalId, customColours, availableColours,
       }
     }
 
-    console.log(alterableColours);
-
     await dispatch({ type: GET_ALTERABLE_COLOURS, payload: alterableColours });
 
     // Set the colours to the initial colours.
@@ -110,6 +103,7 @@ export const getAlterableColours = ({ globalId, customColours, availableColours,
 };
 
 export const alterColours = (colours) => async (dispatch, getState) => {
+
   // Update the url query parameters with the newly selected colours.
   let params = {};
   for (let [ i, { hex} ] of colours.entries()) {
@@ -117,23 +111,21 @@ export const alterColours = (colours) => async (dispatch, getState) => {
   }
   updateQueryString(params);
 
-  console.log('colours', colours);
-
   await dispatch({ type: ALTER_COLOURS, payload: colours });
 
   // Since the colours have been updated, we should also update the pattern url with
   // the new colours.
-  let { globalId, material, customColours } = getState().variant;
-  await dispatch(setPatternUrl(globalId, getState().alterableColours, colours, material));
+  let { globalId, customColours } = getState().variant;
+  await dispatch(setPatternUrl(globalId, getState().alterableColours, colours));
 };
 
 export const setVariant = (globalId) => async dispatch => {
   // Update the url query parameters with the new variant.
-  //updateQueryString({ globalId });
+  updateQueryString({ globalId });
 
   // Unset the pattern url so the UI goes into a loading state while the new
   // pattern is built.
-  // await dispatch({ type: SET_PATTERN_URL, payload: null });
+  await dispatch({ type: SET_PATTERN_URL, payload: null });
 
   let variant = await GFHAPI.getVariant(globalId);
 
@@ -151,8 +143,6 @@ export const setVariant = (globalId) => async dispatch => {
 
 export const setPatternUrl = (globalId, alterableColours, replacementColours) => async dispatch => {
 
-  console.log('replacementColours', replacementColours);
-
   // Connect to Cloudinary
   const cl = cloudinary.Cloudinary.new( { cloud_name: "gh"});
 
@@ -168,9 +158,6 @@ export const setPatternUrl = (globalId, alterableColours, replacementColours) =>
       }
     });
   }
-
-  transformations.transformation.push({effect: "blur:45"});
-  transformations.transformation.push({effect: "multiply", flags: ["relative", "tiled"], opacity: 100});
 
   transformations.transformation.push({
     // Apply Cloudinary auto quality optimisation.

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { decodeHTML } from 'gfh-js-utilities';
-//import './sass/app.scss';
+import './sass/app.scss';
 import 'materialize-css/sass/materialize.scss';
 import 'materialize-css';
 

@@ -1,0 +1,14 @@
+#layers {
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  .restore-defaults {
+    position: absolute;
+    right: -50px;
+    cursor: pointer;
+    i {
+      font-size: 2.8rem;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.layer {
+  width: 100%;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+
+  .swatch {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 20px;
+    position: relative;
+    margin: 0 10px;
+  }
+  .colour-picker-wrapper {
+    position: absolute;
+    left: -51px;
+    top: 35px;
+    padding-top: 20px;
+  }
+
+  .preloader-wrapper.small {
+    width: 50px;
+    height: 50px;
+    top: -5px;
+    position: absolute;
+    left: 5px;
+  }
+}
