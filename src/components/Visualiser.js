@@ -22,19 +22,17 @@ class Visualiser extends Component {
     return (
       <div id="primary-image-wrapper">
         <Installation
-          pattern="Sparse"
-          id="sparse"
-          scale="1"
-          width="530"
-          height="650"
-          fullWidth="530"
-          fullHeight="650"
+          pattern="SingleTile"
+          id="single-tile"
+          scale="0.35"
+          width="560"
+          height="560"
+          fullWidth="560"
+          fullHeight="560"
           showUI={false}
-          //setModal={this.props.setModal}
           patternImgUrl={this.props.patternUrl}
+          sliced={false}
           orientation="vertical"
-          // Lock down the tiles to a specific set of 3 (default random 3/16).
-          tiles={[20, 9, 7]}
           hasLoaded={ () => this.props.setPatternLoaded(true) }
         />
       </div>
@@ -60,6 +58,19 @@ class Visualiser extends Component {
             </div>
           </div>
         </div>
+        <Installation
+          pattern="HalfDrop"
+          id="half-drop"
+          scale="0.2"
+          width="1170"
+          height="450"
+          fullWidth="1170"
+          fullHeight="450"
+          showUI={false}
+          patternImgUrl={this.props.patternUrl}
+          sliced={false}
+          hasLoaded={ () => { console.log('loaded'); this.props.setPatternLoaded(true) } }
+        />
       </div>
     );
   }
