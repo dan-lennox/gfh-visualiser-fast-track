@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { setVariant, alterColour, alterColours, setPatternLoaded } from '../actions';
 import { CircularPreloader, ColourLayers } from 'gfh-react-components';
 import { Installation } from 'installation-builder';
+import queryString from 'query-string';
 
 class Visualiser extends Component {
 
@@ -15,7 +16,11 @@ class Visualiser extends Component {
   }
 
   componentDidMount() {
-    this.props.setVariant(this.props.globalId);
+
+    // Retrieve initial state from url query params if possible.
+    // Alternatively use the globalId passed in via initial props.
+    let { globalId } = queryString.parse(location.search);
+    this.props.setVariant(globalId || this.props.globalId);
   }
 
   renderPrimaryImage() {
