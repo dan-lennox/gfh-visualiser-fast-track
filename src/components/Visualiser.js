@@ -64,8 +64,8 @@ class Visualiser extends Component {
           </div>
         </div>
         <Installation
-          pattern="HalfDrop"
-          id="half-drop"
+          pattern={ variant.designRepeat === 'halfDrop' ? "HalfDrop" : "Straight" }
+          id="install1"
           scale="0.2"
           width="1170"
           height="450"
@@ -74,7 +74,7 @@ class Visualiser extends Component {
           showUI={false}
           patternImgUrl={this.props.patternUrl}
           sliced={false}
-          hasLoaded={ () => { console.log('loaded'); this.props.setPatternLoaded(true) } }
+          hasLoaded={ () => { this.props.setPatternLoaded(true) } }
         />
       </div>
     );
