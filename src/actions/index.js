@@ -23,12 +23,17 @@ import { updateQueryString } from 'gfh-js-utilities';
  *
  * @param colour Object { name, hex }
  *   The new colour.
+ *
+ * @param setLoading Boolean
+ *   A boolean indicating whether to notify the rest of the app that the colour
+ *   is being altered. Used to display loading indicators on the swatches which
+ *   is not always desirable.
  */
-export const alterColour = (index, colour)  => async (dispatch, getState) => {
+export const alterColour = (index, colour, setLoading=true)  => async (dispatch, getState) => {
   // Set the pattern to unloaded, so the UI can respond accordingly.
-  await dispatch(setPatternLoaded(false, `colour-${index}`));
+  setLoading && await dispatch(setPatternLoaded(false, `colour-${index}`));
 
-  // Replace the old colour with the newsetPatternLoaded colour.
+  // Replace the old colour with the new setPatternLoaded colour.
   let colours = getState().colours;
   colours[index] = colour;
 
