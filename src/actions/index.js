@@ -58,9 +58,9 @@ export const getAlterableColours = ({ globalId, customColours, availableColours,
     // Once the image has loaded, we extract an array of its indexed hex colours.
     let indexedColours = extractIndexedColours(srcImg);
 
-    // Filter the list of alterable colours to those specified in both the variant and
-    // extracted by the extractIndexedColours operation.
-    let alterableColours = customColours.filter(({ hex }) => indexedColours.indexOf(hex) >= 0);
+    let alterableColours = indexedColours
+      .filter(({ hex }) => customColours.findIndex(custom => custom.hex === hex) >= 0)
+      .map(({ hex, percentage }) => { return { hex, percentage } });
 
     // Set the initial colours to the alterable (default) colours.
     let initialColours = alterableColours.slice();
