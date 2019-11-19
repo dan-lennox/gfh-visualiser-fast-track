@@ -58,7 +58,7 @@ class Visualiser extends Component {
                 reset={() => alterColours(alterableColours)}
                 alterableColours={alterableColours}
                 availableColours={variant.availableColours}
-                alterColour={alterColour}
+                onAlterColour={alterColour}
               />
             </div>
           </div>
