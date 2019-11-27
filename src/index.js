@@ -4,6 +4,7 @@ import { decodeHTML } from 'gfh-js-utilities';
 import './sass/app.scss';
 import 'materialize-css/sass/materialize.scss';
 import 'materialize-css';
+import 'gfh-react-components/index.css';
 
 import App from './App';
 
