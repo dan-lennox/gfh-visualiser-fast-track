@@ -38,7 +38,7 @@
     "gfh-js-utilities": "./src/lib/gfh-js-utilities/dist",
     "gfh-react-components": "./src/lib/gfh-react-components/dist",
     "installation-builder": "./src/lib/installation-builder/dist",
-    "jszip": "^3.2.2",
+    "jszip": "^3.7.0",
     "materialize-css": "^1.0.0-rc.2",
     "query-string": "^6.8.2",
     "react": "^16.11.0",
